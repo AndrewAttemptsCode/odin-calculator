@@ -32,3 +32,21 @@ function operate(num1, operator, num2) {
             return "Invalid operator";
     }
 }
+
+// Create the functions that populate the display when
+// you click the number buttons.
+
+const numberButtons = document.querySelectorAll(".numberButton");
+const display = document.querySelector("#display");
+
+let displayValue = "";
+
+numberButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
+        display.value += value;
+        displayValue += value;
+        console.log(displayValue);
+    });
+});
+
