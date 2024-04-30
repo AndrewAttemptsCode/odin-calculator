@@ -37,14 +37,14 @@ function operate(num1, operator, num2) {
 // you click the number buttons.
 
 const numberButtons = document.querySelectorAll(".numberButton");
-const display = document.querySelector("#display");
+const display = document.querySelector(".display");
 
 let displayValue = "";
 
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
-        display.value += value;
+        display.textContent += value;
         displayValue += value;
         console.log(displayValue);
     });
