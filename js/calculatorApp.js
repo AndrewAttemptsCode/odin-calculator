@@ -1,52 +1,90 @@
+// Math functions
 function add(num1, num2) {
-    return num1 + num2;
+    return display.textContent = num1 + num2;
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    return display.textContent = num1 - num2;
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return display.textContent = num1 * num2;
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    return display.textContent = num1 / num2;
 }
 
-// let operandFirst = "";
-// let operandSecond = "";
-// let operator = "";
-
+// Operator selection
 function operate(num1, operator, num2) {
     switch (operator) {
-        case "add":
+        case "+":
             return add(num1, num2);
-        case "subtract":
+        case "-":
             return subtract(num1, num2);
-        case "multiply":
+        case "*":
             return multiply(num1, num2);
-        case "divide":
+        case "/":
             return divide(num1, num2);
         default:
-            return "Invalid operator";
+            return display.textContent = "Error";
     }
 }
 
-// Create the functions that populate the display when
-// you click the number buttons.
+// Initializers //
 
 const numberButtons = document.querySelectorAll(".numberButton");
 const display = document.querySelector(".display");
+const operatorButtons = document.querySelectorAll(".operatorButton");
+const equals = document.querySelector(".equalsButton");
+const clear = document.querySelector(".clearButton");
 
-let displayValue = "";
+let operandFirst = "";
+let operandSecond = "";
+let operator = "";
 
+// Event listeners //
+
+// Number buttons
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
+        if (display.textContent === "0") {
+            display.textContent = "";
+        }
         const value = button.textContent;
         display.textContent += value;
-        displayValue += value;
-        console.log(displayValue);
+        operator.length === 0 ? operandFirst += value : operandSecond += value;
+        console.log(display.textContent);
     });
 });
 
+// Operator buttons
+operatorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
+        display.textContent += value;
+        operator = value;
+        console.log(display.textContent);
+    });
+});
+
+// Equals button
+equals.addEventListener("click", () => {
+    let result = operate(+operandFirst, operator, +operandSecond);
+    operandFirst = result.toString();
+    operandSecond = "";
+    console.log(display.textContent);
+});
+
+// Clear button
+clear.addEventListener("click", () => {
+    display.textContent = "0";
+    operandFirst = "";
+    operandSecond = "";
+    operator = "";
+    console.clear();
+});
+
+// TODO: After calculation, you're able to add onto first operand result string
+// TODO: Multiple clicks of operator button adds onto the display (e.g. 5 +++ 5)
+// TODO: Add a decimal operator
