@@ -66,7 +66,11 @@ numberButtons.forEach(button => {
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
-        display.textContent += value;
+        if (operator) {
+            display.textContent = display.textContent.slice(0, -1) + value;    
+        } else {
+            display.textContent += value;
+        }
         operator = value;
         calculationPerformed = false;
         console.log(display.textContent);
@@ -78,6 +82,7 @@ equals.addEventListener("click", () => {
     let result = operate(+operandFirst, operator, +operandSecond);
     operandFirst = result.toString();
     operandSecond = "";
+    operator = "";
     calculationPerformed = true;
     console.log(display.textContent);
 });
@@ -92,5 +97,4 @@ clear.addEventListener("click", () => {
     console.clear();
 });
 
-// TODO: Multiple clicks of operator button adds onto the display (e.g. 5 +++ 5)
 // TODO: Add a decimal operator
