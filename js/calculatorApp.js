@@ -19,16 +19,21 @@ function divide(num1, num2) {
 function operate(num1, operator, num2) {
     switch (operator) {
         case "+":
-            return add(num1, num2);
+            result = add(num1, num2);
+            break;
         case "-":
-            return subtract(num1, num2);
+            result = subtract(num1, num2);
+            break;
         case "*":
-            return multiply(num1, num2);
+            result = multiply(num1, num2);
+            break;
         case "/":
-            return divide(num1, num2);
+            result = divide(num1, num2);
+            break;
         default:
-            return display.textContent = "Error";
+            result = "Error";
     }
+    return Number.isInteger(result) ? result : result.toFixed(4);
 }
 
 // Initializers //
@@ -38,6 +43,7 @@ const display = document.querySelector(".display");
 const operatorButtons = document.querySelectorAll(".operatorButton");
 const equals = document.querySelector(".equalsButton");
 const clear = document.querySelector(".clearButton");
+const decimal = document.querySelector(".decimalButton");
 
 let operandFirst = "";
 let operandSecond = "";
@@ -80,7 +86,8 @@ operatorButtons.forEach(button => {
 // Equals button
 equals.addEventListener("click", () => {
     let result = operate(+operandFirst, operator, +operandSecond);
-    operandFirst = result.toString();
+    display.textContent = result;
+    operandFirst = result;
     operandSecond = "";
     operator = "";
     calculationPerformed = true;
@@ -97,4 +104,12 @@ clear.addEventListener("click", () => {
     console.clear();
 });
 
-// TODO: Add a decimal operator
+// Decimal button
+decimal.addEventListener("click", () => {
+    if (calculationPerformed) return;
+
+    const value = decimal.textContent;
+    display.textContent += value;
+    operator.length === 0 ? operandFirst += value : operandSecond += value;
+    console.log(display.textContent);
+})
