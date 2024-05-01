@@ -33,7 +33,7 @@ function operate(num1, operator, num2) {
         default:
             result = "Error";
     }
-    return Number.isInteger(result) ? result : result.toFixed(4);
+    return Number.isInteger(result) ? result : result.toFixed(2);
 }
 
 // Initializers //
