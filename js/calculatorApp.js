@@ -72,10 +72,17 @@ numberButtons.forEach(button => {
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
-        if (operator) {
-            display.textContent = display.textContent.slice(0, -1) + value;    
+        if (operandFirst && operandSecond && operator) {
+            let result = operate(+operandFirst, operator, +operandSecond);
+            operandFirst = result;
+            operandSecond = "";
+            display.textContent = result + value;
         } else {
-            display.textContent += value;
+            if (operator) {
+                display.textContent = display.textContent.slice(0, -1) + value;    
+            } else {
+                display.textContent += value;
+            }
         }
         operator = value;
         calculationPerformed = false;
@@ -112,4 +119,4 @@ decimal.addEventListener("click", () => {
     display.textContent += value;
     operator.length === 0 ? operandFirst += value : operandSecond += value;
     console.log(display.textContent);
-})
+});
