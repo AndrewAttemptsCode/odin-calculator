@@ -32,7 +32,8 @@ body {
     display: flex;
     flex-direction: column;
     border: 2px solid pink;
-    padding: 1px;
+    padding: 3px;
+    /* width: auto; */
 }
 
 .display {
@@ -76,10 +77,15 @@ body {
 .keypadRight {
     display: flex;
     flex-direction: column;
-    width: calc(33.33% - 8px);
+    /* width: calc(33.33% - 8px); */
+    margin-left: 0;
     border: 1px solid yellow;
 }
 
-/* .keypadRight button {
-    margin: 2px;
-} */
+.keypadRight button {
+    flex-grow: 1;
+}
+
+#standard {
+    flex-grow: 0;
+}
