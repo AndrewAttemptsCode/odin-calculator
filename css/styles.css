@@ -19,8 +19,67 @@ body {
     box-sizing: inherit;
 }
 
-.display {
-    color: white;
-    font-size: large;
-    font-weight: bold;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: 2px solid white;
 }
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid pink;
+    padding: 1px;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    border: 1px solid purple;
+    background: gainsboro;
+}
+
+.calculator button {
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+}
+
+.keypadLeft {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(66.66% - 8px);
+    border: 1px solid rgb(0, 4, 255);
+}
+
+.keypadLeft button {
+    width: calc(33.33% - 8px);
+    margin: 2px;
+}
+
+.keypadRight {
+    display: flex;
+    flex-direction: column;
+    width: calc(33.33% - 8px);
+    border: 1px solid yellow;
+}
+
+/* .keypadRight button {
+    margin: 2px;
+} */
