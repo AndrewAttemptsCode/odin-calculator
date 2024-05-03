@@ -13,9 +13,7 @@ body {
     background-position: center;
 }
 
-*,
-*:before,
-*:after {
+* {
     box-sizing: inherit;
 }
 
@@ -25,61 +23,58 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    border: 2px solid white;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
-    border: 2px solid pink;
-    padding: 3px;
-    /* width: auto; */
+    padding: 5px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.61);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 5px solid rgb(84, 120, 189);
 }
 
 .display {
     display: flex;
     justify-content: flex-end;
-    font-size: 32px;
+    font-size: 38px;
     font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
     border: 1px solid purple;
     background: gainsboro;
 }
 
 .calculator button {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     margin: 2px;
+    font-size: 24px;
     cursor: pointer;
+}
+
+.row button img {
+    height: 24px;
 }
 
 .keypad {
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
+    margin-top: 2px;
+    border-top: 2px solid rgba(114, 113, 113, 0.562);
 }
 
 .keypadLeft {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    width: calc(66.66% - 8px);
-    border: 1px solid rgb(0, 4, 255);
-}
-
-.keypadLeft button {
-    width: calc(33.33% - 8px);
-    margin: 2px;
 }
 
 .keypadRight {
     display: flex;
     flex-direction: column;
-    /* width: calc(33.33% - 8px); */
-    margin-left: 0;
-    border: 1px solid yellow;
 }
 
 .keypadRight button {
